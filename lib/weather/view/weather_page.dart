@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:weather_repository/weather_repository.dart';
-
-import '../../search/search.dart';
 import '../../settings/settings.dart';
 import '../../theme/theme.dart';
 import '../weather.dart';
@@ -35,14 +33,6 @@ class WeatherView extends StatelessWidget {
               Navigator.of(context).push<void>(SettingsPage.route(
                 context.read<WeatherBloc>(),
               ));
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () async {
-              final city = await Navigator.of(context).push(SearchPage.route());
-              // ignore: use_build_context_synchronously
-              context.read<WeatherBloc>().add(WeatherEvent.started(city!));
             },
           ),
         ],
